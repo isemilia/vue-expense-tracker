@@ -2,9 +2,9 @@
   <Header />
   <div class="container">
     <Balance v-bind:total="total" />
-    <IncomeExpenses v-bind:income="Math.abs(income)" v-bind:expense="Math.abs(expense)" />
+    <IncomeExpenses v-bind:income="Math.abs(+income)" v-bind:expense="Math.abs(+expense)" />
     <TransactionList v-bind:transactions="transactions" />
-    <AddTransaction />
+    <AddTransaction v-bind:handle-submit="handleSubmit" />
   </div>
 </template>
 
@@ -49,4 +49,8 @@ const expense = computed(() => {
     }, 0)
     .toFixed(2)
 })
+
+const handleSubmit = (data) => {
+  console.log(data)
+}
 </script>
