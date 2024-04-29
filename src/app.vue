@@ -29,20 +29,24 @@ const total = computed(() => {
 })
 
 const income = computed(() => {
-  return transactions.value.reduce((acc, next) => {
-    if (next.amount > 0) {
-      return acc + next.amount
-    }
-    return acc
-  }, 0)
+  return transactions.value
+    .reduce((acc, next) => {
+      if (next.amount > 0) {
+        return acc + next.amount
+      }
+      return acc
+    }, 0)
+    .toFixed(2)
 })
 
 const expense = computed(() => {
-  return transactions.value.reduce((acc, next) => {
-    if (next.amount < 0) {
-      return acc + next.amount
-    }
-    return acc
-  }, 0)
+  return transactions.value
+    .reduce((acc, next) => {
+      if (next.amount < 0) {
+        return acc + next.amount
+      }
+      return acc
+    }, 0)
+    .toFixed(2)
 })
 </script>
