@@ -9,13 +9,13 @@
 </template>
 
 <script setup>
+import { ref, computed } from 'vue'
+
 import Header from '@/components/header.vue'
 import Balance from '@/components/balance.vue'
 import IncomeExpenses from '@/components/income-expenses.vue'
 import TransactionList from '@/components/transaction-list.vue'
 import AddTransaction from '@/components/add-transaction.vue'
-
-import { ref, computed } from 'vue'
 
 const transactions = ref([
   { id: 1, text: 'Billie Eilish', amount: -19.99 },

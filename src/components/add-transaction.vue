@@ -10,7 +10,7 @@
         >Amount <br />
         (negative - expense, positive - income)</label
       >
-      <input v-model="number" type="number" id="amount" placeholder="Enter amount..." />
+      <input v-model="amount" type="number" id="amount" placeholder="Enter amount..." />
     </div>
     <button class="btn">Add transaction</button>
   </form>
@@ -18,6 +18,7 @@
 
 <script setup>
 import { ref, defineProps } from 'vue'
+import { useToast } from 'vue-toastification'
 
 const props = defineProps({
   handleSubmit: {
@@ -26,10 +27,19 @@ const props = defineProps({
   }
 })
 
+const toast = useToast()
+
 const text = ref('')
-const number = ref('')
+const amount = ref('')
 
 const handleSubmit = () => {
-  props.handleSubmit({ text: text.value, number: number.value })
+  if (!(text.value || amount.value)) {
+    toast.error('Both fields must be filled')
+    return
+  }
+  props.handleSubmit({ text: text.value, amount: amount.value })
+
+  text.value = ''
+  amount.value = ''
 }
 </script>
