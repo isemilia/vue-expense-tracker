@@ -7,7 +7,7 @@
       v-bind:key="transaction.id"
     >
       {{ transaction.text }} <span>${{ transaction.amount }}</span
-      ><button class="delete-btn">x</button>
+      ><button @click="() => handleDelete(transaction.id)" class="delete-btn">x</button>
     </li>
   </ul>
 </template>
@@ -21,4 +21,9 @@ const props = defineProps({
     required: true
   }
 })
+const emit = defineEmits(['delete-transaction'])
+
+const handleDelete = (id) => {
+  emit('delete-transaction', id)
+}
 </script>
