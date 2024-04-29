@@ -14,13 +14,23 @@
 
 <script>
 export default {
-  data() {
+  // data() {
+  //   return {
+  //     transactions: [
+  //       { id: 1, text: 'Billie Eilish', amount: -19.99 },
+  //       { id: 2, text: "Carla's Dreams", amount: 299.99 },
+  //       { id: 3, text: 'Ariana Grande', amount: -10 }
+  //     ]
+  //   }
+  // }
+  setup() {
+    const transactions = [
+      { id: 1, text: 'Billie Eilish', amount: -19.99 },
+      { id: 2, text: "Carla's Dreams", amount: 299.99 },
+      { id: 3, text: 'Ariana Grande', amount: -10 }
+    ]
     return {
-      transactions: [
-        { id: 1, text: 'Billie Eilish', amount: -19.99 },
-        { id: 2, text: "Carla's Dreams", amount: 299.99 },
-        { id: 3, text: 'Ariana Grande', amount: -10 }
-      ]
+      transactions
     }
   }
 }
