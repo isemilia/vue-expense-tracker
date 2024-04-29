@@ -4,7 +4,7 @@
     <Balance v-bind:total="total" />
     <IncomeExpenses v-bind:income="Math.abs(+income)" v-bind:expense="Math.abs(+expense)" />
     <TransactionList v-bind:transactions="transactions" />
-    <AddTransaction v-bind:handle-submit="handleSubmit" />
+    <AddTransaction @transaction-submitted="handleTransaction" />
   </div>
 </template>
 
@@ -50,7 +50,7 @@ const expense = computed(() => {
     .toFixed(2)
 })
 
-const handleSubmit = (data) => {
+const handleTransaction = (data) => {
   console.log(data)
 }
 </script>

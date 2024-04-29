@@ -20,14 +20,15 @@
 import { ref, defineProps } from 'vue'
 import { useToast } from 'vue-toastification'
 
-const props = defineProps({
-  handleSubmit: {
-    type: Function,
-    required: true
-  }
-})
+// const props = defineProps({
+//   handleSubmit: {
+//     type: Function,
+//     required: true
+//   }
+// })
 
 const toast = useToast()
+const emit = defineEmits(['transaction-submitted'])
 
 const text = ref('')
 const amount = ref('')
@@ -37,7 +38,13 @@ const handleSubmit = () => {
     toast.error('Both fields must be filled')
     return
   }
-  props.handleSubmit({ text: text.value, amount: amount.value })
+
+  const transactionData = {
+    text: text.value,
+    amount: parseFloat(amount.value)
+  }
+
+  emit('transaction-submitted', transactionData)
 
   text.value = ''
   amount.value = ''
